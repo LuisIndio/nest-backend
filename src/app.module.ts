@@ -20,6 +20,15 @@ import { parse } from 'path';
     database: process.env.MYSQL_DATABASE,
     autoLoadEntities: true,
     synchronize: true,
+    ssl: process.env.MYSQL_SSL === 'true',
+    extra: {
+      ssl: 
+        process.env.MYSQL_SSL === 'true' 
+          ? { 
+              rejectUnauthorized: false 
+            } 
+          : null,
+    },
   }),
   EventsModule,
   UsersModule,
