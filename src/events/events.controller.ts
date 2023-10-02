@@ -16,16 +16,23 @@ import { ApiTags,ApiBearerAuth } from '@nestjs/swagger';
 export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
+  
   @Post()
   create(@Body() createEventDto: CreateEventDto,@ActiveUser() user: UserActiveInterface) {
     return this.eventsService.create(createEventDto,user);
   }
 
   @Get()
-  findAll(@ActiveUser() user: UserActiveInterface) {
-    return this.eventsService.findAll(user);
+  findAll() {
+    return this.eventsService.findAll();
   }
 
+  @Get('user')
+  findAllByUser(@ActiveUser() user: UserActiveInterface)  {
+    
+    return this.eventsService.findAllByUser(user);
+  }
+  
   @Get(':id')
   findOne(@Param('id') id: number,@ActiveUser() user: UserActiveInterface) {
     return this.eventsService.findOne(id,user);
@@ -35,7 +42,6 @@ export class EventsController {
   update(@Param('id') id: number, @Body() updateEventDto: UpdateEventDto,@ActiveUser() user: UserActiveInterface) {
     return this.eventsService.update(id, updateEventDto,user);
   }
-
   @Delete(':id')
   remove(@Param('id') id: number,@ActiveUser() user: UserActiveInterface) {
     return this.eventsService.remove(id,user);

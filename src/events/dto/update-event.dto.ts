@@ -7,4 +7,11 @@ export class UpdateEventDto {
     @IsString()
     @IsOptional()
     name: string;
+
+    @IsString()
+    @IsOptional()
+    description: string;
+
+    @IsOptional()
+    date: Date;
 }

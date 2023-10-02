@@ -9,6 +9,12 @@ export class Event {
     @Column()
     name: string;
 
+    @Column()
+    description: string;
+
+    @Column()
+    date: Date;
+
     @DeleteDateColumn()
     deletedAt?: Date;
 

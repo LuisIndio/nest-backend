@@ -21,7 +21,11 @@ export class EventsService {
       userId:user.id});
   }
 
-  async findAll(user: UserActiveInterface) {
+  async findAll() {
+    
+    return await this.eventRepository.find();
+  }
+  async findAllByUser(user: UserActiveInterface) {
     if(user.role === Role.ADMIN){
       return await this.eventRepository.find();
     }
