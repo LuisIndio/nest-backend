@@ -4,7 +4,6 @@ import { UpdateEventDto } from './dto/update-event.dto';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Event } from './entities/event.entity';
-import { User } from 'src/users/entities/user.entity';
 import { UserActiveInterface } from 'src/Common/interfaces/user-active.interface';
 import { Role } from 'src/Common/enums/rol.enum';
 
@@ -13,6 +12,7 @@ export class EventsService {
   constructor(
     @InjectRepository(Event)
     private readonly eventRepository: Repository<Event>,
+
   ) {}
 
   async create(createEventDto: CreateEventDto,user: UserActiveInterface) {

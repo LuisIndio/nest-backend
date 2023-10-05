@@ -15,6 +15,9 @@ export class Event {
     @Column()
     date: Date;
 
+    @Column()
+    filename: string;
+
     @DeleteDateColumn()
     deletedAt?: Date;
 

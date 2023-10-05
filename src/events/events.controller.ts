@@ -1,11 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete} from '@nestjs/common';
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { Role } from 'src/Common/enums/rol.enum';
 import { ActiveUser } from 'src/Common/decorators/active-user.decorator';
-import { User } from 'src/users/entities/user.entity';
 import { UserActiveInterface } from 'src/Common/interfaces/user-active.interface';
 import { ApiTags,ApiBearerAuth } from '@nestjs/swagger';
 
@@ -16,7 +15,6 @@ import { ApiTags,ApiBearerAuth } from '@nestjs/swagger';
 export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
-  
   @Post()
   create(@Body() createEventDto: CreateEventDto,@ActiveUser() user: UserActiveInterface) {
     return this.eventsService.create(createEventDto,user);

@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { parse } from 'path';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { parse } from 'path';
   EventsModule,
   UsersModule,
   AuthModule,
+  ImagesModule,
 ],
   controllers: [],
   providers: [],
