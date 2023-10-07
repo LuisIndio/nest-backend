@@ -19,10 +19,27 @@ export class EventsController {
   create(@Body() createEventDto: CreateEventDto,@ActiveUser() user: UserActiveInterface) {
     return this.eventsService.create(createEventDto,user);
   }
+  @Post(':eventId/add-users')
+  async addUsersToEvent(
+    @Param('eventId') eventId: number,
+    @ActiveUser() user: UserActiveInterface,
+  ) {
+    try {
+      console.log(user);
+      console.log(eventId);
+      const event = await this.eventsService.addUsersToEvent(eventId, user);
+      console.log(event);
+      return { message: 'Usuarios agregados al evento exitosamente', event };
+    } catch (error) {
+      return { message: 'Error al agregar usuarios al evento', error: error.message };
+    }
+  }
 
   @Get()
   findAll() {
-    return this.eventsService.findAll();
+    return this.eventsService.findAll(
+      
+    );
   }
 
   @Get('user')

@@ -1,4 +1,5 @@
-import { IsDate, IsDateString, IsISO8601, IsOptional, IsString,MinLength } from "class-validator";
+import { IsDate, IsDateString, IsISO8601, IsInt, IsOptional, IsString,MinLength } from "class-validator";
+import { User } from "src/users/entities/user.entity";
 
 export class CreateEventDto {
 

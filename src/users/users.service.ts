@@ -31,7 +31,7 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return this.userRepository.findOne({ where: { id }, select: ['id', 'email', 'password', 'role']});
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

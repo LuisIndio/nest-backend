@@ -21,9 +21,8 @@ export class Event {
     @DeleteDateColumn()
     deletedAt?: Date;
 
-    @ManyToMany(() => User)
-    @JoinColumn({ name: 'userId',referencedColumnName: 'id'})
-    user: User;
+    @ManyToMany(() => User,(user) => user.events)
+    users: User[];
 
     @Column()
     userId: number;
